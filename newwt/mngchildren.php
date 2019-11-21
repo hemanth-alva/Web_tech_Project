@@ -11,7 +11,7 @@ $connection = new mysqli($servername,$uname,$password,$dbname);
 
 if(isset($_GET['del']))
 		  {
-		          mysqli_query($conn,"DELETE FROM donor WHERE uid = '".$_GET['uid']."'");
+		          mysqli_query($connection,"DELETE FROM donor WHERE uid = '".$_GET['uid']."'");
                   $_SESSION['msg']="data deleted !!";
 		  }
 ?>
@@ -350,15 +350,15 @@ if(isset($_GET['del']))
                                                 <th>Full Name</th>
                                                 <th>UID</th>
                                                 <th>Area</th>
-                                                <th>Email </th>>
-                                                <th>contact</th>
+                                                <th>School </th>>
+                                                <th>Age</th>
                                                 <th>Action</th>
                                                 
                                             </tr>
                                         </thead>
                                         <tbody>
 <?php
-$sql=mysqli_query($conn,"select * from donor");
+$sql=mysqli_query($connection,"select * from studentdet");
 $cnt=1;
 while($row=mysqli_fetch_array($sql))
 {
@@ -370,8 +370,8 @@ while($row=mysqli_fetch_array($sql))
                                                 <td><?php echo $row['uid'];?></td>
                                                 <td><?php echo $row['area'];?>
                                                 </td>
-                                                <td><?php echo $row['email'];?></td>
-                                                <td><?php echo $row['contact'];?></td>
+                                                <td><?php echo $row['school'];?></td>
+                                                <td><?php echo $row['age'];?></td>
                                                 <td><a href="mnpchildren.php?uid=<?php echo $row['uid']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"><i class="fa fa-times fa fa-white"></i></a></td>
                                             </tr>
                                             
